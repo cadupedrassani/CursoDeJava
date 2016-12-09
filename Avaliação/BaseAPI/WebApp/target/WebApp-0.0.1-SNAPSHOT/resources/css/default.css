@@ -1,0 +1,35 @@
+@CHARSET "ISO-8859-1";
+
+button.btn.btn-default.gold{
+	background-color: white; 
+    color: black; 
+    border: 1px solid #4CAF50;
+    border-radius: 0px;
+    font-family: Arial;
+    src: url(sansation_bold.woff);
+    font-weight: bold;
+}
+
+label{
+	font-family: Arial;
+}
+
+button.btn.btn-default.gold:hover{
+	background-color: #4CAF50;
+    color: white;
+    border-radius: 0px;
+    font-family: myFirstFont;
+    src: url(sansation_bold.woff);
+    font-weight: bold;
+}
+table td {
+	padding: 5px;
+}
+
+table td.id{
+	background-color: #4CAF50;
+}
+
+table td.descricao{
+	background-color: #6CAF50;
+}

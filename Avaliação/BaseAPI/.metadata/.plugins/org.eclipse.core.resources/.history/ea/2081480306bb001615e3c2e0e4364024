@@ -1,0 +1,85 @@
+package br.com.carlos.projetolocadora.ctrl;
+
+import javax.ws.rs.Consumes;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
+
+import br.com.carlos.projetolocadora.dao.EnderecoDAO;
+import br.com.carlos.projetolocadora.dto.EnderecoDTO;
+import br.com.carlos.projetolocadora.dto.FilmeDTO;
+import br.com.carlos.projetolocadora.modelo.Categoria;
+import br.com.carlos.projetolocadora.modelo.Endereco;
+import br.com.carlos.projetolocadora.modelo.Filme;
+import br.com.carlos.projetolocadora.modelo.Usuario;
+
+public class EnderecoCtrl {
+
+	@POST
+	@Produces("application/json")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Path("/cadastrar")
+	public EnderecoDTO cadastrarEndereco(EnderecoDTO enderecoDTO){
+		
+		Endereco endereco = new Endereco();
+		EnderecoDAO enderecoDAO = new EnderecoDAO();
+		
+		try{
+			this.validarCamposObrigatorios(enderecoDTO);
+			endereco = this.converterFilmeDTOEmFilme(filmeDTO);
+			enderecoDAO.criar(endereco);
+			enderecoDTO.setId(endereco.getId());	
+		}catch(Exception e){
+			String mensagem = "Problema ao criar registro na base. Mensagem detalhada: ";
+			enderecoDTO.setMensagem(mensagem + e.getMessage());	
+		}
+		return enderecoDTO;
+	}
+	
+	public void validarCamposObrigatorios(EnderecoDTO enderecoDTO) throws Exception{
+		
+		if(enderecoDTO.getCep().isEmpty() || enderecoDTO.getCep() == null){
+			throw new Exception ("Campo CEP obrigatório.");
+		}
+		
+		if(enderecoDTO.getNumero() == null){
+			throw new Exception("Campo Numero obrigatório");
+		}
+	}
+	
+	public Endereco converterEnderecoDTOEmEndereco(EnderecoDTO enderecoDTO){
+		
+		Endereco endereco = new Endereco();
+		
+		endereco.setBairro(enderecoDTO.getBairro());
+		endereco.setCep(enderecoDTO.getCep());
+		endereco.setCidade(enderecoDTO.getCidade());
+		endereco.setComplemento(endereco.getComplemento());
+		endereco.setEstado(enderecoDTO.getEstado());
+		endereco.setId(enderecoDTO.getId());
+		endereco.setNumero(enderecoDTO.getNumero());
+		endereco.setRua(enderecoDTO.getRua());
+		
+		//Usuario usuario = new UsuarioCtrl().converterDTOEmCategoria(enderecoDTO.getUsuarioDTO());
+		//endereco.setUsuarios(usuario);
+		
+		return endereco;
+	}
+	
+	public EnderecoDTO converterEnderecoEmEnderecoDTO(Endereco endereco){
+		
+		EnderecoDTO enderecoDTO = new EnderecoDTO();
+		
+		enderecoDTO.setBairro(endereco.getBairro());
+		enderecoDTO.setCep(endereco.getCep());
+		enderecoDTO.setCidade(endereco.getCidade());
+		enderecoDTO.setComplemento(endereco.getComplemento());
+		enderecoDTO.setEstado(endereco.getEstado());
+		enderecoDTO.setId(endereco.getId());
+		enderecoDTO.setNumero(endereco.getNumero());
+		enderecoDTO.setRua(endereco.getRua());
+		
+		return enderecoDTO;
+	}
+}

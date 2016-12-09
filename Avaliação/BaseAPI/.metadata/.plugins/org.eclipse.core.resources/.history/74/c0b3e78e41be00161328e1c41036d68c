@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="resources/css/bootstrap.min.css">
+<link rel="stylesheet" href="resources/css/default.css">
+</head>
+<body>
+
+<header class="jumbotron subhead">
+	<div class="container">
+		<h1>Locacora de Filmes</h1>
+		<p>Cadastros e listagens</p>
+	</div>
+</header>
+
+<div class="container">
+	<div class="row">
+		<div class="span9">
+			<section id="btn-dropdown-categoria">
+				<div class="btn-group">
+					<button class="btn primary">Categoria</button>
+					<button class="btn dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+					<ul class="dropdown-menu">
+						<li onclick="abrirTelaCadastroCategoria()"><a href="#">Cadastrar</a></li>
+						<li onclick="abrirTelaPesquisaCategoria()"><a href="#">Listar</a></li>
+					</ul>
+				</div>
+			</section>
+			<div class="container-fluid">
+  				<div class="row centered">
+    		<div id="conteudo-principal" class="col-sm-4 col-md-4"></div>
+  </div>
+</div>
+		</div>
+	</div>
+</div>
+</br>
+<div class="container">
+	<div class="row">
+		<div class="span9">
+			<section id="btn-dropdown-filme">
+				<div class="btn-group">
+					<button class="btn primary">Filme</button>
+					<button class="btn dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+					<ul class="dropdown-menu">
+						<li onclick="abrirTelaCadastroFilme()"><a href="#">Cadastrar</a></li>
+						<li onclick="abrirTelaPesquisaFilme()"><a href="#">Listar</a></li>
+					</ul>
+				</div>
+			</section>
+		</div>
+	</div>
+</div>
+
+</br>
+<div class="container">
+	<div class="row">
+		<div class="span9">
+			<section id="btn-dropdown-endereco">
+				<div class="btn-group">
+					<button class="btn primary">Endereço</button>
+					<button class="btn dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+					<ul class="dropdown-menu">
+						<li onclick="abrirTelaCadastroEndereco()"><a href="#">Cadastrar</a></li>
+						<li onclick="abrirTelaPesquisaEndereco()"><a href="#">Listar</a></li>
+					</ul>
+				</div>
+			</section>
+		</div>
+	</div>
+</div>
+</br>
+<div class="container">
+	<div class="row">
+		<div class="span9">
+			<section id="btn-drodsown-usuario">
+				<div class="btn-group">
+					<button class="btn primary">Usuários</button>
+					<button class="btn dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+					<ul class="dropdown-menu">
+						<li onclick="abrirTelaCadastroUsuario()"><a href="#">Cadastrar</a></li>
+						<li onclick="abrirTelaPesquisaUsuario()"><a href="#">Listar</a></li>
+					</ul>
+				</div>
+			</section>
+		</div>
+	</div>
+</div>
+
+<footer class="footer">
+	<div class="container">
+      	<p class="pull-right"><a href="#">Voltar ao topo</a></p>
+        <ul class="footer-links">
+        		<p> Feito por Carlos Eduardo Pedrassani - Todos os direitos reservados</p>
+          		<li><a href="https://github.com/cadupedrassani">GitHub</a></li>
+          		<li class="muted">·</li>
+        	<li><a href="https://www.facebook.com/spkadu">Facebook</a></li>
+		</ul>
+	</div>
+</footer>
+
+<script src="resources/js/jquery.min.js"></script>
+<script src="resources/js/bootstrap.min.js"></script>
+<script src="resources/js/categoria.js"></script>
+<script src="resources/js/default.js"></script>
+<script src="resources/js/endereco.js"></script>
+<script src="resources/js/filme.js"></script>
+<script src="resources/js/usuario.js"></script>
+
+</body>
+</html>

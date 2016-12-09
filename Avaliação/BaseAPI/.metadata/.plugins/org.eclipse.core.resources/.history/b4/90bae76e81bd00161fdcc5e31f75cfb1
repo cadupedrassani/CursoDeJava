@@ -1,0 +1,145 @@
+package br.com.carlos.projetolocadora.ctrl;
+
+import javax.ws.rs.Consumes;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
+
+import br.com.carlos.projetolocadora.dao.ClienteDAO;
+import br.com.carlos.projetolocadora.dao.FuncionarioDAO;
+import br.com.carlos.projetolocadora.dao.UsuarioDAO;
+import br.com.carlos.projetolocadora.dto.ClienteDTO;
+import br.com.carlos.projetolocadora.dto.EnderecoDTO;
+import br.com.carlos.projetolocadora.dto.FuncionarioDTO;
+import br.com.carlos.projetolocadora.dto.UsuarioDTO;
+import br.com.carlos.projetolocadora.modelo.Cliente;
+import br.com.carlos.projetolocadora.modelo.Endereco;
+import br.com.carlos.projetolocadora.modelo.Funcionario;
+import br.com.carlos.projetolocadora.modelo.Usuario;
+
+@Path("/usuario")
+public class UsuarioCtrl {
+	
+	Usuario usuario;
+	Funcionario funcionario;
+	Cliente cliente;
+	
+	@POST
+	@Produces("application/json")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Path("/criarFuncionario")
+	public FuncionarioDTO criarFuncionario(FuncionarioDTO funcionarioDTO){
+
+		UsuarioDAO usuarioDAO = new UsuarioDAO();
+		FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
+		UsuarioDTO usuarioDTO = new UsuarioDTO(); 
+		
+		try {
+			this.validarCamposObrigatorios(funcionarioDTO.getUsuarioDTO());
+			converterUsuarioDTOEmUsuario(usuarioDTO);
+			usuarioDAO.criar(usuario);
+			
+			converterFuncionarioDTOEmFuncionario(funcionarioDTO);
+			funcionario.setUsuario(usuario);
+			funcionarioDAO.criar(funcionario);
+		} catch (Exception e) {
+			String mensagem = "Mensagem detalhada: ";
+			funcionarioDTO.setMensagem(mensagem + e.getMessage());
+		}
+		return converterFuncionarioEmFuncionarioDTO();
+	}
+
+	@POST
+	@Produces("application/json")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Path("/criarCliente")
+	public ClienteDTO criarCliente(ClienteDTO clienteDTO){
+		
+		UsuarioDAO usuarioDAO = new UsuarioDAO();
+		ClienteDAO clienteDAO = new ClienteDAO();
+		
+		try{
+			this.validarCamposObrigatorios(clienteDTO);
+			converterUsuarioDTOEmUsuario(clienteDTO);
+			usuarioDAO.criar(usuario);
+			
+			converterClienteDTOEmCliente(clienteDTO);
+			cliente.setUsuario(usuario);
+			clienteDAO.criar(cliente);
+		}catch(Exception e){
+			clienteDTO.setMensagem(e.getMessage());
+		}
+		
+		return converterClienteEmClienteDTO();
+	}
+	
+	public UsuarioDTO converterUsuarioEmUsuarioDTO(){
+		
+		UsuarioDTO usuarioDTO = new UsuarioDTO();
+		
+		usuarioDTO.setCelular(usuario.getCelular());
+		usuarioDTO.setEmail(usuario.getEmail());
+		usuarioDTO.setId(usuario.getId());
+		usuarioDTO.setNome(usuario.getNome());
+		usuarioDTO.setTelefone(usuario.getTelefone());
+		
+		EnderecoDTO enderecoDTO = new EnderecoCtrl().converterEnderecoEmEnderecoDTO(usuario.getEndereco());
+		usuarioDTO.setEnderecoDTO(enderecoDTO);
+		
+		return usuarioDTO;
+	}
+	
+	public void converterUsuarioDTOEmUsuario(UsuarioDTO usuarioDTO){
+		
+		usuario.setCelular(usuarioDTO.getCelular());
+		usuario.setEmail(usuarioDTO.getEmail());
+		usuario.setId(usuarioDTO.getId());
+		usuario.setNome(usuarioDTO.getNome());
+		usuario.setTelefone(usuarioDTO.getTelefone());
+		
+		Endereco endereco = new EnderecoCtrl().converterEnderecoDTOEmEndereco(usuarioDTO.getEnderecoDTO());
+		usuario.setEndereco(endereco);
+	}
+	
+	public FuncionarioDTO converterFuncionarioEmFuncionarioDTO(){
+		
+		FuncionarioDTO funcionarioDTO = new FuncionarioDTO();
+		
+		funcionarioDTO.setIdFuncionario(funcionario.getId());
+		funcionarioDTO.setLogin(funcionario.getLogin());
+		funcionarioDTO.setSalario(funcionario.getSalario());
+		funcionarioDTO.setSenha(funcionario.getSenha());
+		
+		return funcionarioDTO;
+	}
+	
+	public void converterFuncionarioDTOEmFuncionario(FuncionarioDTO funcionarioDTO){
+		
+		funcionario.setId(funcionarioDTO.getIdFuncionario());
+		funcionario.setLogin(funcionarioDTO.getLogin());
+		funcionario.setSalario(funcionarioDTO.getSalario());
+		funcionario.setSenha(funcionarioDTO.getSenha());
+	}
+	
+	public ClienteDTO converterClienteEmClienteDTO(){
+		
+		ClienteDTO clienteDTO = new ClienteDTO();
+
+		clienteDTO.setIdCliente(cliente.getId());
+		
+		return clienteDTO;
+	}
+	
+	public void converterClienteDTOEmCliente(ClienteDTO clienteDTO){
+		
+		cliente.setId(clienteDTO.getIdCliente());
+	
+	}
+	
+	public void validarCamposObrigatorios(UsuarioDTO usuarioDTO) throws Exception{
+		if(usuarioDTO.getNome() == null || usuarioDTO.getNome().isEmpty()){
+			throw new Exception ("Campo nome obrigatório.");
+		}
+	}
+}

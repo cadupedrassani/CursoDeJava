@@ -1,0 +1,119 @@
+package br.com.carlos.projetolocadora.ctrl;
+
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
+
+import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
+
+import br.com.carlos.projetolocadora.dao.FilmeDAO;
+import br.com.carlos.projetolocadora.dto.CategoriaDTO;
+import br.com.carlos.projetolocadora.dto.FilmeDTO;
+import br.com.carlos.projetolocadora.dto.ListFilmeDTO;
+import br.com.carlos.projetolocadora.modelo.Categoria;
+import br.com.carlos.projetolocadora.modelo.Filme;
+
+@Path("/filme")
+public class FilmeCtrl {
+
+	@POST
+	@Produces("application/json")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Path("/criarFilme")
+	public FilmeDTO criarFilme(FilmeDTO filmeDTO){
+		
+		Filme filme = new Filme();
+		FilmeDAO filmeDAO = new FilmeDAO();
+		
+		try{
+			this.validarCamposObrigatorios(filmeDTO);
+			filme = this.converterFilmeDTOEmFilme(filmeDTO);
+			filmeDAO.criar(filme);
+			filmeDTO.setId(filme.getId());	
+		}catch(Exception e){
+			String mensagem = "Mensagem detalhada: ";
+			filmeDTO.setMensagem(mensagem + e.getMessage());	
+		}
+		return filmeDTO;
+	}
+
+	public Filme converterFilmeDTOEmFilme(FilmeDTO filmeDTO){
+		
+		Filme filme = new Filme();
+		
+		filme.setId(filmeDTO.getId());
+		filme.setResumo(filmeDTO.getResumo());
+		filme.setDuracao(filmeDTO.getDuracao());
+		filme.setDescricao(filmeDTO.getDescricao());
+		filme.setClassificao(filmeDTO.getClassificacao());
+		filme.setAno(filmeDTO.getAno());
+		
+		Categoria categoria = new CategoriaCtrl().converterDTOEmCategoria(filmeDTO.getCategoriaDTO());
+		filme.setCategoria(categoria);
+		
+		return filme;
+	}
+	
+	public void validarCamposObrigatorios(FilmeDTO filmeDTO) throws Exception{
+		
+		if(filmeDTO.getDescricao() == null || filmeDTO.getDescricao().isEmpty()){
+			throw new Exception ("Campo descrição obrigatório.");
+		}
+		
+		if(filmeDTO.getCategoriaDTO() == null){
+			throw new Exception("Campo categoria é obrigatório.");
+		}
+	}
+	
+	@GET
+	@Produces("application/json")
+	@Path("/listar")
+	public ListFilmeDTO listarFilme(){
+		
+		ListFilmeDTO listFilmeDTO = new ListFilmeDTO();
+		List<Filme> filmes = new ArrayList<Filme>();
+		FilmeDAO filmeDAO = new FilmeDAO();
+		List<FilmeDTO> filmesDTO = new ArrayList<FilmeDTO>();
+		
+		try{
+			filmes = filmeDAO.pesq(null);
+			
+			for(Filme filme : filmes){
+				FilmeDTO filmeDTO = new FilmeDTO();
+				filmeDTO = this.converterFilmeEmFilmeDTO(filme);
+				filmesDTO.add(filmeDTO);
+			}
+			
+			listFilmeDTO.setRetorno(filmesDTO);
+			
+		}catch(Exception e){
+			String mensagem = "Erro ao listar filmes. Mensagem detalhada: ";
+			listFilmeDTO.setMensagem(mensagem + e.getMessage());	
+		}
+		return listFilmeDTO;
+	}
+	
+	public FilmeDTO converterFilmeEmFilmeDTO(Filme filme){
+		
+		FilmeDTO filmeDTO = new FilmeDTO();
+		
+		filmeDTO.setId(filme.getId());
+		filmeDTO.setAno(filme.getAno());
+		filmeDTO.setClassificacao(filme.getClassificao());
+		filmeDTO.setDescricao(filme.getDescricao());
+		filmeDTO.setDuracao(filme.getDuracao());
+		filmeDTO.setResumo(filme.getResumo());
+		
+		CategoriaDTO categoriaDTO = new CategoriaCtrl().converterCategoriaEmDTO(filme.getCategoria());
+		filmeDTO.setCategoriaDTO(categoriaDTO);
+		
+		return filmeDTO;
+	}
+}
+

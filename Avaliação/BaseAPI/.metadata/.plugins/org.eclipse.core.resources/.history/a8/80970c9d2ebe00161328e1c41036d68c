@@ -1,0 +1,35 @@
+
+function abrirTelaCadastroCategoria(){
+	var url = "/WebApp/categoria/cadastro.html";
+	$.get(url, '', function(data){
+		$('#conteudo-principal').html(data);
+	})
+}
+
+function abrirTelaPesquisaCategoria(){
+	var url = "/WebApp/categoria/pesquisa.html";
+	$.get(url, '', function(data){
+		$('#conteudo-principal').html(data)
+	})
+}
+
+function abrirTelaCadastroEndereco(){
+	var url = "/WebApp/endereco/cadastro.html";
+	$.get(url, '', function(data){
+		$('#conteudo-principal').html(data);
+	})
+}
+
+function abrirTelaCadastroFilme(){
+	var url = "/WebApp/filme/cadastro.html";
+	$.get(url, '', function(data){
+		$('#conteudo-principal').html(data);
+	})
+}
+
+function abrirTelaCadastroUsuario(){
+	var url = "/WebApp/usuario/cadastro.html";
+	$.get(url, '', function(data){
+		$('#conteudo-principal').html(data);
+	})
+}

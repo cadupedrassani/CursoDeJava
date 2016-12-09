@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="javax.ws.rs.PathParam"/>
+<fullyQualifiedTypeName name="br.com.carlos.calculanotas.nota.Nota"/>
+<fullyQualifiedTypeName name="java.lang.Math"/>
+<fullyQualifiedTypeName name="br.com.carlos.projetolocadora.dao.CategoriaDAO"/>
+<fullyQualifiedTypeName name="javax.ws.rs.Path"/>
+<fullyQualifiedTypeName name="javax.ws.rs.Produces"/>
+<fullyQualifiedTypeName name="javax.ws.rs.Consumes"/>
+<fullyQualifiedTypeName name="javax.ws.rs.core.MediaType"/>
+<fullyQualifiedTypeName name="br.com.carlos.projetolocadora.modelo.Filme"/>
+<fullyQualifiedTypeName name="br.com.carlos.projetolocadora.modelo.Categoria"/>
+<fullyQualifiedTypeName name="br.com.carlos.projetolocadora.dto.CategoriaDTO"/>
+<fullyQualifiedTypeName name="br.com.carlos.projetolocadora.ctrl.CategoriaCtrl"/>
+<fullyQualifiedTypeName name="br.com.carlos.projetolocadora.dao.FilmeDAO"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="br.com.carlos.projetolocadora.dto.BaseListDTO"/>
+<fullyQualifiedTypeName name="br.com.carlos.projetolocadora.dto.FilmeDTO"/>
+<fullyQualifiedTypeName name="br.com.carlos.projetolocadora.dto.ListFilmeDTO"/>
+<fullyQualifiedTypeName name="br.com.carlos.projetolocadora.dao.EnderecoDAO"/>
+<fullyQualifiedTypeName name="br.com.carlos.projetolocadora.dto.BaseDTO"/>
+<fullyQualifiedTypeName name="br.com.carlos.projetolocadora.ctrl.UsuarioCtrl"/>
+<fullyQualifiedTypeName name="br.com.carlos.projetolocadora.dto.ListEnderecoDTO"/>
+<fullyQualifiedTypeName name="java.util.Calendar"/>
+<fullyQualifiedTypeName name="java.lang.Integer"/>
+<fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
+<fullyQualifiedTypeName name="javax.ws.rs.POST"/>
+<fullyQualifiedTypeName name="br.com.carlos.projetolocadora.dao.UsuarioDAO"/>
+<fullyQualifiedTypeName name="br.com.carlos.projetolocadora.modelo.Endereco"/>
+<fullyQualifiedTypeName name="br.com.carlos.projetolocadora.dto.EnderecoDTO"/>
+<fullyQualifiedTypeName name="br.com.carlos.projetolocadora.modelo.Funcionario"/>
+<fullyQualifiedTypeName name="br.com.carlos.projetolocadora.modelo.Cliente"/>
+<fullyQualifiedTypeName name="br.com.carlos.projetolocadora.dto.FuncionarioDTO"/>
+<fullyQualifiedTypeName name="br.com.carlos.projetolocadora.dao.ClienteDAO"/>
+<fullyQualifiedTypeName name="java.math.BigDecimal"/>
+<fullyQualifiedTypeName name="java.lang.Exception"/>
+<fullyQualifiedTypeName name="br.com.carlos.projetolocadora.dto.ClienteDTO"/>
+<fullyQualifiedTypeName name="br.com.carlos.projetolocadora.dao.FuncionarioDAO"/>
+<fullyQualifiedTypeName name="br.com.carlos.projetolocadora.dto.UsuarioDTO"/>
+<fullyQualifiedTypeName name="br.com.carlos.projetolocadora.modelo.Usuario"/>
+</qualifiedTypeNameHistroy>

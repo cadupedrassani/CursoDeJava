@@ -1,0 +1,50 @@
+function consultarCategoria(){
+	
+	var idEndereco = $('#cod-endereco').val();
+	var operacao = '/ControleAPI/endereco/' + idEndereco;
+	
+	$.ajax({
+		url: operacao
+	}).done(function(data){
+		console.log(data);
+		if(data.mensagem != null && data.mensagem != ""){
+			$('#descricao-categoria').html(data.mensagem);
+		} else{
+			$('#descricao-categoria').html(data.descricao);
+		}
+	});
+}
+
+function cadastrarCategoria(){
+	
+	var endereco = $("#endereco").val();
+	var enderecoDTO = new Object();
+	var operacao = "/ControleAPI/endereco/cadastrarEndereco"
+		
+		enderecoDTO.endereco = endereco;
+	
+	$.ajax({
+		method: "POST",
+		url: operacao,
+		data: JSON.stringify(enderecoDTO),
+		contentType: "application/json"
+	}).done(function (data){
+		var mensagem = "";
+		var titulo = "";
+		if(data.mensagem != undefined && data.mensagem != null && data.mensagem != ''){
+			titulo = "Atenção";
+			mensagem = data.mensagem;
+		}else{
+			titulo = 'Sucesso';
+			mensagem = "Categoria cadastrada com sucesso.";
+		}
+		
+		mostrarModal(titulo, mensagem)
+	});
+}
+function mostrarModal(titulo, mensagem){
+	
+	$('#modal-title').html(titulo);
+	$('#modal-mensagem').html(mensagem);
+	$('#modal-mensagens').modal('show');
+}

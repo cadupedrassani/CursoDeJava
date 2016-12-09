@@ -1,0 +1,153 @@
+@CHARSET "ISO-8859-1";
+
+.centered {
+   text-align: center;
+   font-size: 2;
+}
+.centered > div {
+   	display: inline-block;
+   	text-align: left;
+   	font-size: 15px;
+}
+
+.container-fluid{
+	float: right; width: 70%;
+}
+
+button.btn.btn-primary.btn-md{
+	float: left; width: 30%
+	background-color: #cfe1fe; 
+    color: black; 
+    border: 1px solid #cfe1fe;
+    border-radius: 0px;
+    font-family: Arial;
+    font-weight: bold;
+}
+
+button.btn.dropdown-toggle{
+	float: left; width: 30%;
+	text-align: center;
+	width: 40px;
+	background-color: #cfe1fe; 
+	border-radius: 0px;
+    color: black; 
+    font-family: Arial;
+    font-weight: bold;
+}
+
+button.btn.dropdown-toggle:hover{
+	float: left; width: 30%;
+	text-align: center;
+	width: 40px;
+	background-color: #004080;
+    color: white;
+    border-radius: 0px;
+    font-family: Arial;
+    font-weight: bold;
+}
+
+button.btn.btn.primary{
+	float: left; width: 30%;
+	text-align: left;
+	width: 100px;
+	background-color: #cfe1fe; 
+    color: black; 
+    border: 1px solid #cfe1fe;
+    border-radius: 0px;
+    font-family: Arial;
+    font-weight: bold;
+}
+
+button.btn.primary:hover{
+	float: left; width: 30%;
+	text-align: left;
+	width: 100px;
+	background-color: #004080;
+    color: white;
+    border-radius: 0px;
+    font-family: Arial;
+    font-weight: bold;
+}
+
+li.li-dropdown{
+	width: 150px;
+  	padding: 2;
+}
+
+label{
+	font-family: Arial;
+}
+
+button.btn.btn-primary.btn-md:hover{
+	background-color: #004080;
+    color: white;
+    border-radius: 0px;
+    font-family: Arial;
+    font-weight: bold;
+}
+table td {
+	padding: 5px;
+}
+
+table td.id{
+	background-color: #4CAF50;
+}
+
+table td.descricao{
+	background-color: #6CAF50;
+}
+
+header.jumbotron {
+  position: relative;
+  padding: 0px 0;
+  color: white;
+  text-align: left;
+  text-shadow: 0 2px 3px rgba(0,0,0,.4), 0 0 30px rgba(0,0,0,.075);
+  background: #020031;
+  background: -moz-linear-gradient(40deg, #27408B 20%, #363636 100%); 
+}
+header.jumbotron h1 {
+  font-size: 55px;
+  font-weight: bold;
+  letter-spacing: -1px;
+  line-height: 1;
+}
+header.jumbotron p {
+  font-size: 24px;
+  font-weight: 300;
+  line-height: 1.25;
+  margin-bottom: 30px;
+}
+
+header.jumbotron:after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: url(../img/bs-docs-masthead-pattern.png) repeat center center;
+  opacity: .4;
+}
+
+.footer {
+  padding: 50px 0;
+  margin-top: 50px;
+  border-top: 1px solid #e5e5e5;
+  background-color: #f5f5f5;
+}
+.footer p {
+  margin-bottom: -100px;
+  color: #777;
+}
+.footer-links {
+  margin: 10px 0;
+}
+.footer-links li {
+  display: inline;
+  padding: 0 2px;
+}
+.footer-links li:first-child {
+  padding-left: 0;
+}

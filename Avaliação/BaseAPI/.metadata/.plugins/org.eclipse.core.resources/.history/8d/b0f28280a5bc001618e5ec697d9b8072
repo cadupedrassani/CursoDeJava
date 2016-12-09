@@ -1,0 +1,30 @@
+function listarEndereco(){
+	var operacao = "/ControleAPI/endereco/listarEndereco";
+	
+	$.ajax({
+		url: operacao
+	}).done(function(data){
+		
+		var lista = data;
+		var linhaTabela = '<label>Endereco</label>';
+		linhaTabela += '<select id="endereco-usuario" class="form-control">';
+		linhaTabela += '<option value="">Selecione...</option>';
+		
+		$('#endereco-usuario-container').html('');
+
+		for(i=0; i < lista.length; i++){
+			
+			linhaTabela += '<option ';
+			linhaTabela += 'value="' + lista[i].id + '">'; 
+			linhaTabela += lista[i].estado;
+			linhaTabela += '</option>';
+		}
+		linhaTabela += '</select>';
+		
+		$('#endereco-usuario-container').append(linhaTabela);
+	})
+}
+
+$(document).ready(function(){
+	listarEndereco();
+})

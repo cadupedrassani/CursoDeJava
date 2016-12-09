@@ -1,0 +1,27 @@
+package br.com.carlos.projetolocadora.ctrl;
+
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import br.com.carlos.projetolocadora.dao.CategoriaDAO
+
+
+@Path("/categoriactrl")
+public class CategoriaCtrl {
+	
+	@GET
+	@Produces("/text/plain")
+	
+	public String consultarIdCategoria(){
+		String id = "";
+		
+		CategoriaDAO dao = new CategoriaDAO();
+		
+		try{
+			return dao.pesqPorId(1).getDescricao();
+		}catch (Exception e){
+			e.printStackTrace();
+		}
+	}
+
+}

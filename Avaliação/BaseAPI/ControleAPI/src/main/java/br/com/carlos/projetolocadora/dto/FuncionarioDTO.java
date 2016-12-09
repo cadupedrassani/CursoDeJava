@@ -1,0 +1,50 @@
+package br.com.carlos.projetolocadora.dto;
+
+import java.math.BigDecimal;
+
+public class FuncionarioDTO {
+
+	private int idFuncionario;
+	private String login;
+	private String senha;
+	private BigDecimal salario;
+	private UsuarioDTO usuarioDTO;
+	private String mensagem;
+	
+	public int getIdFuncionario() {
+		return idFuncionario;
+	}
+	public void setIdFuncionario(int idFuncionario) {
+		this.idFuncionario = idFuncionario;
+	}
+	public String getMensagem() {
+		return mensagem;
+	}
+	public void setMensagem(String mensagem) {
+		this.mensagem = mensagem;
+	}
+	public UsuarioDTO getUsuarioDTO() {
+		return usuarioDTO;
+	}
+	public void setUsuarioDTO(UsuarioDTO usuarioDTO) {
+		this.usuarioDTO = usuarioDTO;
+	}
+	public String getLogin() {
+		return login;
+	}
+	public void setLogin(String login) {
+		this.login = login;
+	}
+	public String getSenha() {
+		return senha;
+	}
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+	public BigDecimal getSalario() {
+		return salario;
+	}
+	public void setSalario(BigDecimal salario) {
+		this.salario = salario;
+	}
+}

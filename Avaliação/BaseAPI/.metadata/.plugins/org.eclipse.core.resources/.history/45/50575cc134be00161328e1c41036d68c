@@ -1,0 +1,126 @@
+package br.com.carlos.projetolocadora.ctrl;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
+
+import br.com.carlos.projetolocadora.dao.CategoriaDAO;
+import br.com.carlos.projetolocadora.dao.EnderecoDAO;
+import br.com.carlos.projetolocadora.dto.BaseDTO;
+import br.com.carlos.projetolocadora.dto.CategoriaDTO;
+import br.com.carlos.projetolocadora.dto.EnderecoDTO;
+import br.com.carlos.projetolocadora.modelo.Categoria;
+import br.com.carlos.projetolocadora.modelo.Endereco;
+
+@Path("/endereco")
+public class EnderecoCtrl {
+
+	@POST
+	@Produces("application/json")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Path("/criarEndereco")
+	public EnderecoDTO criarEndereco(EnderecoDTO enderecoDTO){
+		
+		Endereco endereco = new Endereco();
+		EnderecoDAO enderecoDAO = new EnderecoDAO();
+		
+		try{
+			this.validarCamposObrigatorios(enderecoDTO);
+			endereco = this.converterEnderecoDTOEmEndereco(enderecoDTO);
+			enderecoDAO.criar(endereco);
+			enderecoDTO.setId(endereco.getId());	
+		}catch(Exception e){
+			enderecoDTO.setMensagem(e.getMessage());	
+		}
+		return enderecoDTO;
+	}
+	
+	public void validarCamposObrigatorios(EnderecoDTO enderecoDTO) throws Exception{
+		
+		if(enderecoDTO.getCep().isEmpty() || enderecoDTO.getCep() == null){
+			throw new Exception ("Campo CEP obrigatório.");
+		}
+	}
+	
+	public Endereco converterEnderecoDTOEmEndereco(EnderecoDTO enderecoDTO){
+		
+		Endereco endereco = new Endereco();
+		
+		endereco.setBairro(enderecoDTO.getBairro());
+		endereco.setCep(enderecoDTO.getCep());
+		endereco.setCidade(enderecoDTO.getCidade());
+		endereco.setComplemento(enderecoDTO.getComplemento());
+		endereco.setEstado(enderecoDTO.getEstado());
+		endereco.setId(enderecoDTO.getId());
+		endereco.setNumero(enderecoDTO.getNumero());
+		endereco.setRua(enderecoDTO.getRua());
+	
+		return endereco;
+	}
+	
+	public EnderecoDTO converterEnderecoEmEnderecoDTO(Endereco endereco){
+		
+		EnderecoDTO enderecoDTO = new EnderecoDTO();
+		
+		enderecoDTO.setBairro(endereco.getBairro());
+		enderecoDTO.setCep(endereco.getCep());
+		enderecoDTO.setCidade(endereco.getCidade());
+		enderecoDTO.setComplemento(endereco.getComplemento());
+		enderecoDTO.setEstado(endereco.getEstado());
+		enderecoDTO.setId(endereco.getId());
+		enderecoDTO.setNumero(endereco.getNumero());
+		enderecoDTO.setRua(endereco.getRua());
+		
+		return enderecoDTO;
+	}
+	
+	@GET
+	@Produces("application/json")
+	@Path("/listarEndereco")
+	public List<EnderecoDTO> listarEndereco(){
+		
+		List<Endereco> enderecos = new ArrayList<Endereco>();
+		EnderecoDAO enderecoDAO = new EnderecoDAO();
+		List<EnderecoDTO> enderecosDTO = new ArrayList<EnderecoDTO>();
+		
+		try{	
+			enderecos = enderecoDAO.pesq(null);
+			for(Endereco endereco : enderecos){
+				EnderecoDTO enderecoDTO = this.converterEnderecoEmEnderecoDTO(endereco);
+				enderecosDTO.add(enderecoDTO);
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return enderecosDTO;
+	}
+	
+	@GET
+	@Produces("application/json")
+	@Path("/{id}")
+	public BaseDTO consultarEndereco(@PathParam("id") Integer id){
+		EnderecoDTO enderecoDTO = new EnderecoDTO();
+		
+		try{
+			Endereco endereco = new EnderecoDAO().pesqPorId(id);
+			enderecoDTO = this.converterEnderecoEmEnderecoDTO(endereco);
+		}catch (Exception e){
+			enderecoDTO.setMensagem("Não foi possivel encontrar registros com essa informação");
+		}
+		return enderecoDTO;
+	}
+	
+	public CategoriaDTO converterCategoriaEmDTO(Categoria categoria){
+		CategoriaDTO categoriaDTO = new CategoriaDTO();
+		categoriaDTO.setId(categoria.getId());
+		categoriaDTO.setDescricao(categoria.getDescricao());
+		return categoriaDTO;
+	}
+}

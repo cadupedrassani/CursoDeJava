@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="/WebApp/resources/css/bootstrap.min.css">
+</head>
+<body>
+<div>
+	<h5>Cadastro de Categoria</h5>
+</div>
+</br>
+
+<div class="input-group">
+	<label>Descrição</label>
+	<input id="descricao-categoria"
+	       type="text"
+	       class="form-control"></input>
+</div>
+</br>
+<div class="input-group">
+	<button id="cadastrar"
+	        type="button"
+	        class="btn btn-primary btn-md"
+	        onclick="cadastrarCategoria();">Cadastrar</button>
+</div>
+
+
+
+<script src="/WebApp/resources/js/jquery.min.js"></script>
+<script src="/WebApp/resources/js/bootstrap.min.js"></script>
+<script src="/WebApp/resources/js/categoria.js"></script>
+<script src="/WebApp/resources/js/default.js"></script>
+
+</body>
+</html>

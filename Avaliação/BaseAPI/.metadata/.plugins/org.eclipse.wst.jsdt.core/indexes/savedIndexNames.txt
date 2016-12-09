@@ -1,0 +1,17 @@
+INDEX VERSION 1.3+C:\Users\WINDOWS 8.1\Desktop\CURSO JAVA\ECLIPSE\BaseAPI\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+2650284646.index
+1209448124.index
+3085942887.index
+4074474540.index
+2278921930.index
+2560959855.index
+2785889402.index
+557632964.index
+2438479811.index
+557632964.index
+9455828.index
+1716971506.index
+1340973830.index
+4130462797.index
+1808742125.index
+773519924.index

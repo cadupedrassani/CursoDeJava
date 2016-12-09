@@ -1,0 +1,32 @@
+package br.com.carlos.projetolocadora.dto;
+
+public class ClienteDTO extends UsuarioDTO {
+	
+	private Integer idCliente;
+	private UsuarioDTO usuarioDTO;
+	private String mensagem;
+
+	public String getMensagem() {
+		return mensagem;
+	}
+
+	public void setMensagem(String mensagem) {
+		this.mensagem = mensagem;
+	}
+
+	public UsuarioDTO getUsuarioDTO() {
+		return usuarioDTO;
+	}
+
+	public void setUsuarioDTO(UsuarioDTO usuarioDTO) {
+		this.usuarioDTO = usuarioDTO;
+	}
+
+	public Integer getIdCliente() {
+		return idCliente;
+	}
+
+	public void setIdCliente(Integer id) {
+		this.idCliente = id;
+	}
+}

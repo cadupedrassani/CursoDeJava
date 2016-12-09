@@ -1,0 +1,3 @@
+#Tomcat publish data
+#Fri Dec 09 17:16:39 BRST 2016
+org.eclipse.jst.j2ee.server\:BaseAPI=WEB-INF/lib/BaseAPI-0.0.1-SNAPSHOT.jar

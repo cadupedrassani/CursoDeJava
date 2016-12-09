@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet" href="/WebApp/resources/css/bootstrap.min.css">
+</head>
+<body>
+<div>
+	<h5>Cadastro de Filme</h5>
+</div>
+<div class="input-group">
+	<label>Descrição</label>
+	<input id="descricao-filme"
+	       type="text"
+	       class="form-control"></input>
+</div>
+</br>
+
+<div class="input-group">
+	<label>Ano de Lançamento</label>
+	<input id="ano-filme"
+	       type="text"
+	       class="form-control"></input>
+</div>
+</br>
+
+<div class="input-group">
+	<label>Resumo</label>
+	<textarea rows="10" 
+			  cols="30"
+			  id="resumo-filme"
+	       	  class="form-control"></textarea>
+</div>
+</br>
+
+<div class="input-group">
+	<button id="cadastrar"
+	        type="button"
+	        class="btn btn-default gold"
+	        onclick="cadastrarEndereco();">Cadastrar</button>
+</div>
+
+<div id="modal-mensagens" class="modal fade" tabindex="-1" role="dialog">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 id="modal-title" class="modal-title"></h5>
+			</div>
+			<div class="modal-body">
+				<label id="modal-mensagem"></label>
+			</div>
+			<div class="modal-footer">
+				<button type="button" 
+						class="btn btn-default gold" 
+						data-dismiss="modal">OK</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script src="/WebApp/resources/js/jquery.min.js"></script>
+<script src="/WebApp/resources/js/bootstrap.min.js"></script>
+<script src="/WebApp/resources/js/default.js"></script>
+<script src="/WebApp/resources/js/filme.js"></script>
+
+</body>
+</html>

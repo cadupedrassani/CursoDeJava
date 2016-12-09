@@ -1,0 +1,5 @@
+package br.com.carlos.projetolocadora.dto;
+
+public class ClienteDTO {
+
+}

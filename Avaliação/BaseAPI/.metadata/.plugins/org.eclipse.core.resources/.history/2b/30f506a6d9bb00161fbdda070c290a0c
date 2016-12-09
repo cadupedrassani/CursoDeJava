@@ -1,0 +1,29 @@
+function listarCategorias(){
+	var operacao = "/ControleAPI/categoria/listarCategorias";
+	
+	$.ajax({
+		url: operacao
+	}).done(function(data){
+		
+		var lista = data;
+		var linhaTabela = '<label>Categoria</label>';
+		linhaTabela = linhaTabela + '<select id="classificacao-filme" class="form-control">';
+		linhaTabela = linhaTabela + '<option value="">Selecione...</option>';
+		
+		$('#lista').html('');
+
+		for(i=0; i < lista.length; i++){
+			
+			linhaTabela = linhaTabela + '<option value="">';
+			linhaTabela = linhaTabela + lista[i].id + lista[i].descricao;
+			linhaTabela = linhaTabela + '</option>';
+
+		}
+		
+		$('#lista').append(linhaTabela);
+	})
+}
+
+$(document).ready(function(){
+	listarCategorias();
+})

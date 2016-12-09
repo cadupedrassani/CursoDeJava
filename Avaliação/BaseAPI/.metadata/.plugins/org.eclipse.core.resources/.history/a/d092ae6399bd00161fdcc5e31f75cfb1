@@ -1,0 +1,10 @@
+
+<div id="div-listagem">
+<br>
+	<table id="lista">
+	</table>	
+</div>
+
+<script src="/WebApp/resources/js/categoria.pesquisa.js"></script>
+<script src="resources/js/default.js"></script>
+

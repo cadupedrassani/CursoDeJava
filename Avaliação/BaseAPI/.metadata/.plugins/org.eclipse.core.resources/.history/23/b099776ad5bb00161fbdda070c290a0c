@@ -1,0 +1,24 @@
+function listarCategorias(){
+	var operacao = "/ControleAPI/categoria/listarCategorias";
+	
+	$.ajax({
+		url: operacao
+	}).done(function(data){
+		
+		var lista = data;
+		var listaSelect = '<label for="categoria-filme">Categoria:</label>';
+		linhaSelect += '<select id="categoria-filme" class="form-control"></select>';
+		linhaSelect += '<option value="">Selecione</option>'
+		
+		for(i=0; i < lista.length; i++){
+			
+			linhaTabela = linhaTabela + '</tr>';
+		}
+		
+		$('#lista').append(linhaTabela);
+	})
+}
+
+$(document).ready(function(){
+	listarCategorias();
+})

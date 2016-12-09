@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+		"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+		<property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+		<property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/ProjetoLocadora</property>
+		<property name="hibernate.connection.username">postgres</property>
+		<property name="hibernate.connection.password">masterkey</property>
+		<property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+		<property name="hibernate.show_sql">true</property>
+		<property name="hibernate.format_sql">true</property>
+		<property name="hbm2ddl.auto">update</property> 
+		<property name="hibernate.current_session_context_class">thread</property>
+		
+		<property name="hibernate.c3p0.min_size">30</property>
+		<property name="hibernate.c3p0.max_size">10000</property>
+		<property name="hibernate.c3p0.timeout">300</property>
+		<property name="hibernate.c3p0.max_statements">50</property>
+		<property name="hibernate.c3p0.idle_test_period">3000</property>
+		<property name="hibernate.c3p0.testConnectionOnCheckout">true</property>
+		<property name="hibernate.c3p0.automaticTestTable">true</property>
+		
+		<mapping class="br.com.carlos.projetolocadora.modelo.Categoria"/>
+		<mapping class="br.com.carlos.projetolocadora.modelo.Cliente"/>
+		<mapping class="br.com.carlos.projetolocadora.modelo.Endereco"/>
+		<mapping class="br.com.carlos.projetolocadora.modelo.Filme"/>
+		<mapping class="br.com.carlos.projetolocadora.modelo.Funcionario"/>
+		<mapping class="br.com.carlos.projetolocadora.modelo.Locacao"/>
+		<mapping class="br.com.carlos.projetolocadora.modelo.LocacaoMidia"/>
+		<mapping class="br.com.carlos.projetolocadora.modelo.Midia"/>
+		<mapping class="br.com.carlos.projetolocadora.modelo.TipoMidia"/>
+		<mapping class="br.com.carlos.projetolocadora.modelo.Usuario"/>
+		
+	</session-factory>
+</hibernate-configuration>

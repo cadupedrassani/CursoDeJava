@@ -1,0 +1,47 @@
+package br.com.carlos.projetolocadora.ctrl;
+
+import javax.ws.rs.Consumes;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
+
+import br.com.carlos.projetolocadora.dao.EnderecoDAO;
+import br.com.carlos.projetolocadora.dto.EnderecoDTO;
+import br.com.carlos.projetolocadora.dto.FilmeDTO;
+import br.com.carlos.projetolocadora.modelo.Endereco;
+
+public class EnderecoCtrl {
+
+	@POST
+	@Produces("application/json")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Path("/cadastrar")
+	public EnderecoDTO cadastrarEndereco(EnderecoDTO enderecoDTO){
+		
+		Endereco endereco = new Endereco();
+		EnderecoDAO enderecoDAO = new EnderecoDAO();
+		
+		try{
+			this.validarCamposObrigatorios(filmeDTO);
+			filme = this.converterFilmeDTOEmFilme(filmeDTO);
+			filmeDAO.criar(filme);
+			filmeDTO.setId(filme.getId());	
+		}catch(Exception e){
+			String mensagem = "Problema ao criar registro na base. Mensagem detalhada: ";
+			filmeDTO.setMensagem(mensagem + e.getMessage());	
+		}
+		return filmeDTO;
+	}
+	
+	public void validarCamposObrigatorios(EnderecoDTO enderecoDTO) throws Exception{
+		
+		if(enderecoDTO.getCep().isEmpty() || enderecoDTO.getCep() == null){
+			throw new Exception ("Campo CEP obrigatório.");
+		}
+		
+		if(enderecoDTO.getNumero() == null){
+			throw new Exception("Campo Numero obrigatório");
+		}
+	}
+}

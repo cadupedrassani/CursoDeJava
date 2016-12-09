@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="/WebApp/resources/css/bootstrap.min.css">
+</head>
+<body>
+<div>
+	<h5>Cadastro de Filme</h5>
+</div>
+
+<div>
+<label>
+	<input type="radio" name="tipo-usuario" value="0">Cliente
+</label>
+<label>
+	<input type="radio" name="tipo-usuario" value="1">Funcionário
+</label>
+</div>
+
+<script src="/WebApp/resources/js/jquery.min.js"></script>
+<script src="/WebApp/resources/js/bootstrap.min.js"></script>
+<script src="/WebApp/resources/js/default.js"></script>
+
+<script src="/WebApp/resources/js/usuario.js"></script>
+
+</body>
+</html>

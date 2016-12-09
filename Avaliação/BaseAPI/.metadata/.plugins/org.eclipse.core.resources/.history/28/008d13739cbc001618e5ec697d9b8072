@@ -1,0 +1,8 @@
+package br.com.carlos.projetolocadora.dto;
+
+public class FuncionarioDTO {
+
+	private String login;
+	private String senha;
+	private String salario;
+}

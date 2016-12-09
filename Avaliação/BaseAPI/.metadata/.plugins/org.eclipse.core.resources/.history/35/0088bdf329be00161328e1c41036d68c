@@ -1,0 +1,102 @@
+
+function cadastrarUsuario(){
+
+	var nome = $("#nome-usuario").val();
+	var telefone = $("#telefone-usuario").val();
+	var celular = $("#celular-usuario").val();
+	var email = $("#email-usuario").val();
+	var endereco = $("#endereco-usuario").val();
+	
+	var salario = $("#salario-usuario").val();
+	var login = $("#login-usuario").val();
+	var senha = $("#senha-login").val();
+	
+	var data;
+	var operacao;
+	
+	if ($('input[name=tipo-usuario]:checked').val() == 1) {
+		
+		var funcionarioDTO = new Object();
+		operacao = "/ControleAPI/usuario/criarFuncionario";
+		
+		funcionarioDTO.usuarioDTO = new Object();
+
+		funcionarioDTO.salario = salario;
+		funcionarioDTO.login = login;
+		funcionarioDTO.senha = senha;
+		
+		funcionarioDTO.usuarioDTO.nome = nome;
+		funcionarioDTO.usuarioDTO.telefone = telefone;
+		funcionarioDTO.usuarioDTO.celular = celular;
+		funcionarioDTO.usuarioDTO.email = email;
+		
+		if(endereco !== undefined && endereco !== '') {
+			funcionarioDTO.usuarioDTO.enderecoDTO = new Object();
+			funcionarioDTO.usuarioDTO.enderecoDTO.id = endereco;
+		}
+		
+		data = JSON.stringify(funcionarioDTO);
+		
+	} else {
+		var clienteDTO = new Object();
+		operacao = "/ControleAPI/usuario/criarCliente";
+		
+		clienteDTO.usuarioDTO = new Object();
+		clienteDTO.usuarioDTO.nome = nome;
+		clienteDTO.usuarioDTO.telefone = telefone;
+		clienteDTO.usuarioDTO.celular = celular;
+		clienteDTO.usuarioDTO.email = email;
+		
+		if(endereco !== undefined && endereco !== '') {
+			clienteDTO.usuarioDTO.enderecoDTO = new Object();
+			clienteDTO.usuarioDTO.enderecoDTO.id = endereco;
+		}
+		
+		data = JSON.stringify(clienteDTO);
+	}
+	
+	$.ajax({
+		method: "POST",
+		url: operacao,
+		data: data,
+		contentType: "application/json"
+	}).done(function (data){
+		var mensagem = "";
+		var titulo = "";
+		if(data.mensagem != undefined && data.mensagem != null && data.mensagem != ''){
+			titulo = "Atenção";
+			mensagem = data.mensagem;
+		}else{
+			titulo = 'Sucesso';
+			if($('input[name=tipo-usuario]:checked').val() == 1){
+				mensagem = "Funcionario cadastrado com sucesso.";	
+			}else{
+				mensagem = "Cliente cadastrado com sucesso.";
+			}
+		}
+		mostrarModal(titulo, mensagem)
+	});
+}
+
+function mostrarModal(titulo, mensagem){
+	
+	$('#modal-title').html(titulo);
+	$('#modal-mensagem').html(mensagem);
+	$('#modal-mensagens').modal('show');
+}
+
+function abilitarParaAparecer(){
+	if($('input[name=tipo-usuario]:checked').val() == 1){
+		$("#salario-usuario-div").show();
+		$("#login-usuario-div").show();
+		$("#senha-usuario-div").show();
+	}else{
+		$("#salario-usuario-div").hide();
+		$("#login-usuario-div").hide();
+		$("#senha-usuario-div").hide();
+	}
+}
+
+
+
+

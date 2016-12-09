@@ -1,0 +1,30 @@
+function listarEndereco(){
+	var operacao = "/ControleAPI/endereco/listarEndereco";
+	
+	$.ajax({
+		url: operacao
+	}).done(function(data){
+		
+		var lista = data;
+		var linhaTabela = '<label>Categoria</label>';
+		linhaTabela += '<select id="categoria-filme" class="form-control">';
+		linhaTabela += '<option value="">Selecione...</option>';
+		
+		$('#categoria-filme-container').html('');
+
+		for(i=0; i < lista.length; i++){
+			
+			linhaTabela += '<option ';
+			linhaTabela += 'value="' + lista[i].id + '">' 
+			linhaTabela += lista[i].descricao;
+			linhaTabela += '</option>';
+		}
+		linhaTabela += '</select>';
+		
+		$('#categoria-filme-container').append(linhaTabela);
+	})
+}
+
+$(document).ready(function(){
+	listarCategorias();
+})

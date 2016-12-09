@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet" href="resources/css/bootstrap.min.css">
+<link rel="stylesheet" href="resources/css/default.css">
+</head>
+<body>
+
+<header class="jumbotron subhead">
+	<div class="container">
+		<h1>Locacora de Filmes</h1>
+		<p>Cadastros e listagens</p>
+	</div>
+</header>
+
+<span class="container-fluid">
+  <span class="row centered">
+    <span id="conteudo-principal" class="col-sm-4 col-md-4"></span>
+  </span>
+</span>
+
+<div class="container">
+	<div class="row">
+		<div class="span9">
+			<section id="btn-dropsown-categoria">
+				<div class="btn-group">
+					<button class="btn primary">Categoria</button>
+					<button class="btn dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+					<ul class="dropdown-menu">
+						<li onclick="abrirTelaCadastroCategoria()"><a href="#">Cadastrar</a></li>
+						<li onclick="abrirTelaPesquisaCategoria()"><a href="#">Listar</a></li>
+					</ul>
+				</div>
+			</section>
+		</div>
+	</div>
+</div>
+</br>
+<div class="container">
+	<div class="row">
+		<div class="span9">
+			<section id="btn-dropsown-categoria">
+				<div class="btn-group">
+					<button class="btn primary">Filme</button>
+					<button class="btn dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+					<ul class="dropdown-menu">
+						<li onclick="abrirTelaCadastroFilme()"><a href="#">Cadastrar</a></li>
+						<li onclick="abrirTelaPesquisaFilme()"><a href="#">Listar</a></li>
+					</ul>
+				</div>
+			</section>
+		</div>
+	</div>
+</div>
+</br>
+<div class="container">
+	<div class="row">
+		<div class="span9">
+			<section id="btn-dropsown-categoria">
+				<div class="btn-group">
+					<button class="btn primary">Endereço</button>
+					<button class="btn dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+					<ul class="dropdown-menu">
+						<li onclick="abrirTelaCadastroEndereco()"><a href="#">Cadastrar</a></li>
+						<li onclick="abrirTelaPesquisaEndereco()"><a href="#">Listar</a></li>
+					</ul>
+				</div>
+			</section>
+		</div>
+	</div>
+</div>
+</br>
+<div class="container">
+	<div class="row">
+		<div class="span9">
+			<section id="btn-dropsown-categoria">
+				<div class="btn-group">
+					<button class="btn primary">Usuários</button>
+					<button class="btn dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+					<ul class="dropdown-menu">
+						<li onclick="abrirTelaCadastroUsuario()"><a href="#">Cadastrar</a></li>
+						<li onclick="abrirTelaPesquisaUsuario()"><a href="#">Listar</a></li>
+					</ul>
+				</div>
+			</section>
+		</div>
+	</div>
+</div>
+
+<script src="resources/js/jquery.min.js"></script>
+<script src="resources/js/bootstrap.min.js"></script>
+<script src="resources/js/categoria.js"></script>
+<script src="resources/js/default.js"></script>
+<script src="resources/js/endereco.js"></script>
+<script src="resources/js/filme.js"></script>
+<script src="resources/js/usuario.js"></script>
+
+</body>
+</html>
